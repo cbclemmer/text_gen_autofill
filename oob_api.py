@@ -2,7 +2,7 @@ import requests
 import sys
 
 # For local streaming, the websockets are hosted without ssl - http://
-HOST = 'http://127.0.0.1:5000'
+HOST = '127.0.0.1:5000'
 URI = f'http://{HOST}/api/v1/generate'
 
 # For reverse-proxied streaming, the remote will likely host with ssl - https://
