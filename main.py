@@ -32,7 +32,7 @@ if len(dataset) > 0:
         last_time = time()
         print(f'{s_time}: #{i} of {iterations}; {len(res)} characters generated in {diff_time:.2f}s')
         if i % save_interval == 0:
-            with open('output.txt', 'w') as f:
+            with open('generations.json', 'w') as f:
                 f.write(json.dumps(generations))
 else:
     for i in range(0, iterations):
