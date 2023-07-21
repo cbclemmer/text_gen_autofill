@@ -17,7 +17,10 @@ if os.path.exists(dataset_file):
     try:
         with open(dataset_file, 'r') as f:
             for item in json.loads(f.read()):
-                dataset.append(item[dataset_key] if dataset_key is not None else item)
+                data = item
+                if dataset_key is not None:
+                    data = item[dataset_key]
+                dataset.append(data)
     except Exception as e:
         print(e)
 
