@@ -14,6 +14,7 @@ dataset = []
 dataset_file = 'input.json'
 dataset_key = 'input'
 if os.path.exists(dataset_file):
+    print('Found dataset file, reading...')
     try:
         with open(dataset_file, 'r') as f:
             for item in json.loads(f.read()):
