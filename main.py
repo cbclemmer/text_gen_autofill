@@ -31,7 +31,9 @@ if len(dataset) > 0:
         iterations = len(dataset)
     for i in range(0, iterations):
         res = generate(dataset[i], 300)
-        generations.append(res)
+        item = f'||anon||{dataset[i]}\n{res}'
+        generations.append(item)
+        print(item)
         s_time = datetime.now().strftime("%H:%M:%S")
         diff_time = time() - last_time
         last_time = time()
@@ -44,6 +46,7 @@ else:
     for i in range(0, iterations):
         res = generate('', 300)
         generations.append(res)
+        print(res)
         s_time = datetime.now().strftime("%H:%M:%S")
         diff_time = time() - last_time
         last_time = time()
