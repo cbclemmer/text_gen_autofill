@@ -23,6 +23,7 @@ use_input_file = get_with_default('use_input_file', True)
 num_tokens = get_with_default('num_tokens', 300)
 print_generation = get_with_default('print_generation', False)
 prefix = get_with_default('prefix', '')
+output_file = get_with_default('output_file', 'generations.json')
 
 print(f"""
 Config:
@@ -30,6 +31,7 @@ Prefix: {prefix}
 Num Generations: {num_generations}
 Save Interval: {save_interval}
 Input File: {input_file}
+Output File: {output_file}
 Use Input File: {str(use_input_file)}
 Num Tokens: {str(num_tokens)}
 Print Generations: {str(print_generation)}
@@ -61,7 +63,7 @@ if use_input_file:
         last_time = time()
         print(f'{s_time}: #{i} of {num_generations}; {len(res)} characters generated in {diff_time:.2f}s')
         if i % save_interval == 0:
-            with open('generations.json', 'w') as f:
+            with open(output_file, 'w', encoding='utf-8') as f:
                 f.write(json.dumps(generations))
 else:
     print('No data file given, running generations with empty strings as input')
@@ -75,5 +77,5 @@ else:
         last_time = time()
         print(f'{s_time}: #{i} of {num_generations}; {len(res)} characters generated in {diff_time:.2f}s')
         if i % save_interval == 0:
-            with open('generations.json', 'w') as f:
+            with open(output_file, 'w', encoding='utf-8') as f:
                 f.write(json.dumps(generations))
